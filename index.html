@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors!</title>
+</head>
+
+<body>
+    <script>
+        function computerPlay() {
+            randomRoll = Math.floor(Math.random() * 3);
+            if (randomRoll == 1) {
+                return "Rock";
+            }
+            else if (randomRoll == 2) {
+                return "Scissors";
+            }
+            else if (randomRoll == 0) {
+                return "Paper";
+            }
+            return;
+        }
+        function playRound(playerSelection, computerSelection) {
+            let playerSelectionNoCase = playerSelection.toUpperCase();
+            if (computerSelection == "Rock") {
+                console.log("computer chose rock")
+
+                if (playerSelectionNoCase == "ROCK") {
+                    return ("Tie");
+                }
+                else if (playerSelectionNoCase == "PAPER") {
+                    return ("Win");
+                }
+                else if (playerSelectionNoCase == "SCISSORS") {
+                    return ("Lose");
+                }
+            }
+
+            else if (computerSelection == "Paper") {
+                console.log("computer chose paper")
+
+                if (playerSelectionNoCase == "PAPER") {
+                    return ("Tie");
+                }
+                else if (playerSelectionNoCase == "ROCK") {
+                    return ("Lose");
+                }
+                else if (playerSelectionNoCase == "SCISSORS") {
+                    return ("Win");
+                }
+            }
+
+            else if (computerSelection == "Scissors") {
+                console.log("computer chose scissors")
+
+                if (playerSelectionNoCase == "SCISSORS") {
+                    return ("Tie");
+                }
+                else if (playerSelectionNoCase == "ROCK") {
+                    return ("Win");
+                }
+                else if (playerSelectionNoCase == "PAPER") {
+                    return ("Lose");
+                }
+            }
+
+        }
+        function game() {
+            let playerScore = 0;
+            let computerScore = 0;
+            for (let i = 0; i < 5; i++) {
+                let playerSelection = prompt("Choose rock, paper, or scissors");
+                let computerSelection = computerPlay();
+                result = playRound(playerSelection, computerSelection);
+                if (result == "Win") {
+                    playerScore++;
+                }
+                else if (result == "Lose") {
+                    computerScore++;
+                }
+                console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
+
+            }
+            if (playerScore < computerScore) {
+                console.log("You lose!");
+            }
+            else if (playerScore > computerScore) {
+                console.log("You win!");
+            }
+            else {
+                console.log("Tie game!");
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
